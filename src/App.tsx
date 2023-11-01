@@ -218,7 +218,7 @@ function App() {
     if (code) {
       setCode(code);
     }
-  }, [window.location.search]);
+  }, []);
 
   const mintSampleNft = async () => {
     if (!provider) {
@@ -305,20 +305,6 @@ function App() {
     uiConsole();
   };
 
-  const initiateTopUp = async () => {
-    if (!torusPlugin) {
-      uiConsole("torus plugin not initialized yet");
-      return;
-    }
-    torusPlugin.initiateTopup("moonpay", {
-      selectedAddress: "0x8cFa648eBfD5736127BbaBd1d3cAe221B45AB9AF",
-      selectedCurrency: "USD",
-      fiatValue: 100,
-      selectedCryptoCurrency: "ETH",
-      chainNetwork: "mainnet",
-    });
-  };
-
   const getChainId = async () => {
     if (!provider) {
       uiConsole("provider not initialized yet");
@@ -327,34 +313,6 @@ function App() {
     const rpc = new RPC(provider);
     const chainId = await rpc.getChainId();
     uiConsole(chainId);
-  };
-
-  const addChain = async () => {
-    if (!provider) {
-      uiConsole("provider not initialized yet");
-      return;
-    }
-    const newChain = {
-      chainId: "0x5",
-      displayName: "Goerli",
-      chainNamespace: CHAIN_NAMESPACES.EIP155,
-      tickerName: "Goerli",
-      ticker: "ETH",
-      decimals: 18,
-      rpcTarget: "https://rpc.ankr.com/eth_goerli",
-      blockExplorer: "https://goerli.etherscan.io",
-    };
-    await web3auth?.addChain(newChain);
-    uiConsole("New Chain Added");
-  };
-
-  const switchChain = async () => {
-    if (!provider) {
-      uiConsole("provider not initialized yet");
-      return;
-    }
-    await web3auth?.switchChain({ chainId: "0x5" });
-    uiConsole("Chain Switched");
   };
 
   const getAccounts = async () => {
@@ -377,16 +335,6 @@ function App() {
     uiConsole(balance);
   };
 
-  const sendTransaction = async () => {
-    if (!provider) {
-      uiConsole("provider not initialized yet");
-      return;
-    }
-    const rpc = new RPC(provider);
-    const receipt = await rpc.sendTransaction();
-    uiConsole(receipt);
-  };
-
   const signMessage = async () => {
     if (!provider) {
       uiConsole("provider not initialized yet");
@@ -406,16 +354,6 @@ function App() {
     const privateKey = await rpc.getPrivateKey();
     uiConsole(privateKey);
   };
-
-  // const changeNetwork = async () => {
-  //   if (!provider) {
-  //     uiConsole("provider not initialized yet");
-  //     return;
-  //   }
-  //   const rpc = new RPC(provider);
-  //   const privateKey = await rpc.getPrivateKey();
-  //   uiConsole(privateKey);
-  // };
 
   function uiConsole(...args: any[]): void {
     const el = document.querySelector("#console>p");

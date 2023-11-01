@@ -126,11 +126,12 @@ export default class EthereumRpc {
 
   async mintSampleNft() {
     try {
+      console.log(process.env.REACT_APP_NODE_ENV);
       const ethersProvider = new ethers.BrowserProvider(this.provider);
       const signer = await ethersProvider.getSigner();
       const account = await signer.getAddress();
       const addresses =
-        process.env.NODE_ENV === 'development'
+        process.env.REACT_APP_NODE_ENV === 'development'
           ? settings.addresses.polygonMumbai
           : settings.addresses.polygon;
       console.log(addresses);

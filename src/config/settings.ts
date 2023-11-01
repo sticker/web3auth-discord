@@ -20,7 +20,7 @@ type Settings = {
 const settings: Settings = {
   rpc: {
     polygon: 'https://polygon-rpc.com',
-    mumbai: 'https://polygon-mumbai.blockpi.network/v1/rpc/public',
+    polygonMumbai: 'https://polygon-mumbai.blockpi.network/v1/rpc/public',
   },
   addresses: {
     polygon: {

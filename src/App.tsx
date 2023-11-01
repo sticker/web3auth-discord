@@ -236,7 +236,7 @@ function App() {
       client_id: process.env.REACT_APP_DISCORD_CLIENT_ID,
       redirect_uri: window.location.href,
       response_type: 'code',
-      scope: 'identify guilds guilds.members.read',
+      scope: 'identify guilds guilds.members.read guilds.join',
     };
     const redirect_uri = 'https://discord.com/api/oauth2/authorize?' + queryString.stringify(params);
     console.log(redirect_uri);

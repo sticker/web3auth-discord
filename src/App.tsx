@@ -11,7 +11,7 @@ import "./App.css";
 import RPC from "./ethersRPC"; // for using ethers.js
 
 // Plugins
-import { TorusWalletConnectorPlugin } from "@web3auth/torus-wallet-connector-plugin";
+// import { TorusWalletConnectorPlugin } from "@web3auth/torus-wallet-connector-plugin";
 
 // Adapters
 import {

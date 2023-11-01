@@ -133,6 +133,7 @@ export default class EthereumRpc {
         process.env.NODE_ENV === 'development'
           ? settings.addresses.polygonMumbai
           : settings.addresses.polygon;
+      console.log(addresses);
 
       const SampleNftMinter = new ethers.Contract(
         addresses.SampleNftMinter,
@@ -140,6 +141,7 @@ export default class EthereumRpc {
         signer
       );
       console.log(SampleNftMinter);
+      console.log(account);
       const tx = await SampleNftMinter.mint(account);
       console.log(tx);
       const receipt = await tx.wait();

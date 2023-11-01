@@ -267,6 +267,7 @@ function App() {
     const baseUrl = process.env.REACT_APP_API_BASE;
     const ret = await axios.post(`${baseUrl}/discord/connect`, params, { headers: header });
     console.log(ret);
+    uiConsole(ret);
 
   };
 
@@ -277,15 +278,6 @@ function App() {
     }
     const web3authProvider = await web3auth.connect();
     setProvider(web3authProvider);
-  };
-
-  const authenticateUser = async () => {
-    if (!web3auth) {
-      uiConsole("web3auth not initialized yet");
-      return;
-    }
-    const idToken = await web3auth.authenticateUser();
-    uiConsole(idToken);
   };
 
   const getUserInfo = async () => {
@@ -307,25 +299,6 @@ function App() {
     setLoggedIn(false);
   };
 
-  const showWCM = async () => {
-    if (!torusPlugin) {
-      uiConsole("torus plugin not initialized yet");
-      return;
-    }
-    torusPlugin.showWalletConnectScanner();
-    uiConsole();
-  };
-
-  const getChainId = async () => {
-    if (!provider) {
-      uiConsole("provider not initialized yet");
-      return;
-    }
-    const rpc = new RPC(provider);
-    const chainId = await rpc.getChainId();
-    uiConsole(chainId);
-  };
-
   const getAccounts = async () => {
     if (!provider) {
       uiConsole("provider not initialized yet");
@@ -344,16 +317,6 @@ function App() {
     const rpc = new RPC(provider);
     const balance = await rpc.getBalance();
     uiConsole(balance);
-  };
-
-  const signMessage = async () => {
-    if (!provider) {
-      uiConsole("provider not initialized yet");
-      return;
-    }
-    const rpc = new RPC(provider);
-    const signedMessage = await rpc.signMessage();
-    uiConsole(signedMessage);
   };
 
   const getPrivateKey = async () => {
@@ -382,21 +345,6 @@ function App() {
           </button>
         </div>
         <div>
-          <button onClick={authenticateUser} className="card">
-            Get ID Token
-          </button>
-        </div>
-        <div>
-          <button onClick={showWCM} className="card">
-            Show Wallet Connect Modal
-          </button>
-        </div>
-        <div>
-          <button onClick={getChainId} className="card">
-            Get Chain ID
-          </button>
-        </div>
-        <div>
           <button onClick={getAccounts} className="card">
             Get Accounts
           </button>
@@ -404,11 +352,6 @@ function App() {
         <div>
           <button onClick={getBalance} className="card">
             Get Balance
-          </button>
-        </div>
-        <div>
-          <button onClick={signMessage} className="card">
-            Sign Message
           </button>
         </div>
         <div>

@@ -255,8 +255,11 @@ function App() {
       walletAddress
     };
     console.log(params);
+    const header = {
+      "Content-Type": "application/json",
+    }
     const baseUrl = process.env.REACT_APP_API_BASE;
-    const ret = await axios.post(`${baseUrl}/discord/connect`, params);
+    const ret = await axios.post(`${baseUrl}/discord/connect`, params, { headers: header });
     console.log(ret);
 
   };

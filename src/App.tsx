@@ -213,10 +213,11 @@ function App() {
 
   useEffect(() => {
     const query = new URLSearchParams(window.location.search);
-    const code = query.get('code');
-    console.log(code);
-    if (code) {
-      setCode(code);
+    const codeParam = query.get('code');
+    console.log(codeParam);
+    if (codeParam) {
+      setCode(codeParam);
+      console.log('set code!');
     }
   }, []);
 
@@ -253,6 +254,7 @@ function App() {
       code,
       walletAddress
     };
+    console.log(params);
     const baseUrl = process.env.REACT_APP_API_BASE;
     const ret = await axios.post(`${baseUrl}/discord/connect`, params);
     console.log(ret);

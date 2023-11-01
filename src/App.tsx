@@ -212,6 +212,12 @@ function App() {
   }, []);
 
   useEffect(() => {
+    if (web3auth?.connected) {
+      setLoggedIn(true);
+    }
+  }, [web3auth?.connected]);
+
+  useEffect(() => {
     const query = new URLSearchParams(window.location.search);
     const codeParam = query.get('code');
     console.log(codeParam);

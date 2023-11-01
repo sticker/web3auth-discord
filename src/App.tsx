@@ -28,8 +28,8 @@ const clientId =
 
 function App() {
   const [web3auth, setWeb3auth] = useState<Web3Auth | null>(null);
-  const [torusPlugin, setTorusPlugin] =
-    useState<TorusWalletConnectorPlugin | null>(null);
+  // const [torusPlugin, setTorusPlugin] =
+  //   useState<TorusWalletConnectorPlugin | null>(null);
   const [provider, setProvider] = useState<IProvider | null>(null);
   const [loggedIn, setLoggedIn] = useState(false);
   const [code, setCode] = useState('');
@@ -105,20 +105,20 @@ function App() {
 
         // adding torus wallet connector plugin
 
-        const torusPlugin = new TorusWalletConnectorPlugin({
-          torusWalletOpts: {},
-          walletInitOptions: {
-            whiteLabel: {
-              theme: { isDark: true, colors: { primary: "#00a8ff" } },
-              logoDark: "https://web3auth.io/images/w3a-L-Favicon-1.svg",
-              logoLight: "https://web3auth.io/images/w3a-D-Favicon-1.svg",
-            },
-            useWalletConnect: true,
-            enableLogging: true,
-          },
-        });
-        setTorusPlugin(torusPlugin);
-        await web3auth.addPlugin(torusPlugin);
+        // const torusPlugin = new TorusWalletConnectorPlugin({
+        //   torusWalletOpts: {},
+        //   walletInitOptions: {
+        //     whiteLabel: {
+        //       theme: { isDark: true, colors: { primary: "#00a8ff" } },
+        //       logoDark: "https://web3auth.io/images/w3a-L-Favicon-1.svg",
+        //       logoLight: "https://web3auth.io/images/w3a-D-Favicon-1.svg",
+        //     },
+        //     useWalletConnect: true,
+        //     enableLogging: true,
+        //   },
+        // });
+        // setTorusPlugin(torusPlugin);
+        // await web3auth.addPlugin(torusPlugin);
 
         // read more about adapters here: https://web3auth.io/docs/sdk/pnp/web/adapters/
 

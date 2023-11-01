@@ -233,7 +233,7 @@ function App() {
   const onLoginDiscord = async () => {
     const params = {
       client_id: process.env.REACT_APP_DISCORD_CLIENT_ID,
-      redirect_uri: process.env.REACT_APP_BASE_URL,
+      redirect_uri: window.location.href,
       response_type: 'code',
       scope: 'identify guilds guilds.members.read',
     };

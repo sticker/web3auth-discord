@@ -6,11 +6,6 @@ import queryString from 'query-string';
 import settings from "./config/settings";
 
 import {
-  ThirdwebProvider,
-  ConnectWallet,
-  metamaskWallet,
-  walletConnect,
-  embeddedWallet,
   useAddress,
   useSigner,
   useBalance,
@@ -20,7 +15,7 @@ import {
 const ThirdwebActions = () => {
 
   // const [provider, setProvider] = useState<ethers.providers.Web3Provider | null>(null);
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn] = useState(false);
   const [code, setCode] = useState('');
 
   const signer = useSigner();

@@ -70,6 +70,24 @@ const ThirdwebActions = () => {
     }
   };
 
+  const getConnectedStatus = async () => {
+    if (!walletAddress) {
+      uiConsole("Please connect wallet first");
+      return;
+    }
+    const params = {
+      walletAddress
+    };
+    console.log(params);
+    const header = {
+      "Content-Type": "application/json",
+    }
+    const baseUrl = process.env.REACT_APP_API_BASE;
+    const ret = await axios.post(`${baseUrl}/discord/status`, params, { headers: header });
+    console.log(ret);
+    uiConsole(ret);
+  };
+
   const onLoginDiscord = async () => {
     const params = {
       client_id: process.env.REACT_APP_DISCORD_CLIENT_ID,
@@ -160,6 +178,11 @@ const ThirdwebActions = () => {
         <div>
           <button onClick={mintSampleNft} className="card">
             Mint Sample NFT
+          </button>
+        </div>
+        <div>
+          <button onClick={getConnectedStatus} className="card">
+            isConnected
           </button>
         </div>
         <div>
